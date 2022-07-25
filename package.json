@@ -9,7 +9,6 @@
     "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^14.2.1",
     "@types/jest": "^27.5.2",
     "@types/node": "^17.0.45",
     "@types/react": "^18.0.15",
@@ -22,15 +21,18 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "dev": "react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve:data": "node data/server.js"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "prettier"
     ]
   },
   "browserslist": {
@@ -43,6 +45,20 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/user-event": "^14.2.1",
+    "eslint-config-prettier": "^8.5.0",
+    "jest-fetch-mock": "^3.0.3",
+    "json-server": "^0.17.0",
+    "prettier": "^2.7.1"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns" : [
+      "<rootDir>/src/index.tsx",
+      "<rootDir>/src/App.tsx",
+      "<rootDir>/src/App.styled.tsx"
     ]
   }
 }
