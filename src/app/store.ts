@@ -1,7 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { monstersReducer } from '../reducers/monsters/monsters.reducer';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    monsters: monstersReducer,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;
