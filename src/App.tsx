@@ -1,7 +1,10 @@
-function App() {
-  return (
-    <h1>Hello World</h1>
-  );
-}
+import { AppContainer } from './App.styled'
+import { BattleOfMonsters } from './pages/battle-of-monsters/BattleOfMonsters'
 
-export default App;
+const App = () => (
+  <AppContainer>
+    <BattleOfMonsters /> 
+  </AppContainer>
+)
+
+export default App
