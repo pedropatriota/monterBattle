@@ -7,7 +7,13 @@ import monstersData from '../../../data/monsters.json'
 import { store } from '../../app/store'
 
 const battleOfMonstersFactory = async () => {
-    mockFetch.mockResponseOnce(JSON.stringify(monstersData.monsters))
+    mockFetch.mockResponse(req => {
+        if (req.url.includes('monsters')) {
+            return Promise.resolve(JSON.stringify(monstersData.monsters))
+        }
+
+        return Promise.reject(new Error('not mapped url'))
+    })
     render(
         <Provider store={store}>
           <BattleOfMonsters />
@@ -18,6 +24,7 @@ const battleOfMonstersFactory = async () => {
 
 describe('BattleOfMonsters', () => {
     beforeEach(() => {
+        mockFetch.enableMocks()
         mockFetch.resetMocks()
     })
 
