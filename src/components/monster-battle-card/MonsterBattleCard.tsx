@@ -8,7 +8,7 @@ type MonsterCardProps = {
 
 const MonsterBattleCard: React.FC<MonsterCardProps> = ({ title }) => {
     return (
-        <BattleMonsterCard center={true}>
+        <BattleMonsterCard centralized>
             <BattleMonsterTitle>{title!}</BattleMonsterTitle>
         </BattleMonsterCard>
     )
