@@ -1,13 +1,15 @@
+import { Monster } from "../../models/interfaces/monster.interface"
 import { BattleMonsterCard, BattleMonsterTitle } from "./MonsterBattleCard.styled"
 
 type MonsterCardProps = {
-    title: string
+    monster?: Monster | null
+    title?: string
 }
 
-const MonsterBattleCard: React.FC<MonsterCardProps> = ({ title }) => {
+const MonsterBattleCard: React.FC<MonsterCardProps> = ({ monster, title }) => {
     return (
-        <BattleMonsterCard>
-            <BattleMonsterTitle>{title}</BattleMonsterTitle>
+        <BattleMonsterCard center={true}>
+            <BattleMonsterTitle>{title!}</BattleMonsterTitle>
         </BattleMonsterCard>
     )
 }
