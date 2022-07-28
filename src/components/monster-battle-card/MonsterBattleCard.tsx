@@ -6,7 +6,7 @@ type MonsterCardProps = {
     title?: string
 }
 
-const MonsterBattleCard: React.FC<MonsterCardProps> = ({ monster, title }) => {
+const MonsterBattleCard: React.FC<MonsterCardProps> = ({ title }) => {
     return (
         <BattleMonsterCard center={true}>
             <BattleMonsterTitle>{title!}</BattleMonsterTitle>
