@@ -26,7 +26,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "serve:data": "node data/server.js"
+    "serve:data": "node data/server.js",
+    "challenge-1": "ts-node --project tsconfig.reasoning.json ./reasoning/challenge-1/index.ts",
+    "challenge-2": "ts-node --project tsconfig.reasoning.json ./reasoning/challenge-2/index.ts",
+    "challenge-3": "ts-node --project tsconfig.reasoning.json ./reasoning/challenge-3/index.ts",
+    "test:challenge-1": "jest --config=jest.reasoning.config.js ./reasoning/challenge-1/index.spec.ts",
+    "test:challenge-2": "jest --config=jest.reasoning.config.js ./reasoning/challenge-2/index.spec.ts",
+    "test:challenge-3": "jest --config=jest.reasoning.config.js ./reasoning/challenge-3/index.spec.ts",
+    "test:all-challenges": "jest --config=jest.reasoning.config.js ./reasoning"
   },
   "eslintConfig": {
     "extends": [
@@ -52,10 +59,12 @@
     "eslint-config-prettier": "^8.5.0",
     "jest-fetch-mock": "^3.0.3",
     "json-server": "^0.17.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "ts-jest": "^28.0.7",
+    "ts-node": "^10.9.1"
   },
   "jest": {
-    "coveragePathIgnorePatterns" : [
+    "coveragePathIgnorePatterns": [
       "<rootDir>/src/index.tsx",
       "<rootDir>/src/App.tsx",
       "<rootDir>/src/App.styled.tsx"
