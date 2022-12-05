@@ -22,7 +22,7 @@ export const StartBattleButton = styled(Button)(({ disabled }) => ({
   background: disabled ? colors.lightGreen : colors.darkGreen,
   boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
   borderRadius: '5px',
-  fontRamily: 'Roboto',
+  fontFamily: 'Roboto',
   fontStyle: 'normal',
   fontWeight: '400',
   fontSize: '18px',
