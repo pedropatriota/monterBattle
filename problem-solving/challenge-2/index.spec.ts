@@ -17,17 +17,17 @@ describe('Challenge 2', () => {
   });
 
   it('Test Case 4', () => {
-    const value = diceFacesCalculator(1, 2, 1);
+    const value = diceFacesCalculator(1, 1, 2);
     expect(value).toBe(2);
   });
 
   it('Test Case 5', () => {
-    const value = diceFacesCalculator(3, 6, 3);
+    const value = diceFacesCalculator(6, 3, 3);
     expect(value).toBe(6);
   });
 
   it('Test Case 6', () => {
-    const value = diceFacesCalculator(6, 5, 4);
+    const value = diceFacesCalculator(3, 5, 3);
     expect(value).toBe(6);
   });
 
