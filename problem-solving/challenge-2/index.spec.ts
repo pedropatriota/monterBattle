@@ -17,12 +17,12 @@ describe('Challenge 2', () => {
   });
 
   it('Test Case 4', () => {
-    const value = diceFacesCalculator(1, 1, 2);
+    const value = diceFacesCalculator(1, 1, 3);
     expect(value).toBe(2);
   });
 
   it('Test Case 5', () => {
-    const value = diceFacesCalculator(6, 3, 3);
+    const value = diceFacesCalculator(5, 3, 3);
     expect(value).toBe(6);
   });
 
