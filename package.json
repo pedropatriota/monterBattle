@@ -66,5 +66,10 @@
       "<rootDir>/src/App.tsx",
       "<rootDir>/src/App.styled.tsx"
     ]
+  },
+  "engines": {
+    "npm" : ">=7.0.0 <9.0.0",
+    "yarn": ">=1.22.0",
+    "node": ">=16.0.0 <17.0.0"
   }
 }
