@@ -17,8 +17,8 @@ You will receive an input like the one below:
 Based on the input above, you will return the sum of all the indexes to get at the end, with the least cost paths, which is the following:
 
 ```
-140
-
 // The least costly path to the last item is this:
 // 42 -> 2 -> 4 -> 36 -> 8 -> 7 -> 6 -> 15 -> 20 -> 1
+// The sum is:
+// 42 + 2 + 4 + 36 + 8 + 7 + 6 + 15 + 20 = 140
 ```
