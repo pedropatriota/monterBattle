@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/preset-typescript": "^7.22.5",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/material": "^5.8.7",
@@ -57,7 +58,7 @@
     "jest-fetch-mock": "^3.0.3",
     "json-server": "^0.17.0",
     "prettier": "^2.7.1",
-    "ts-jest": "^28.0.7",
+    "ts-jest": "^28.0.8",
     "ts-node": "^10.9.1"
   },
   "jest": {
@@ -68,7 +69,7 @@
     ]
   },
   "engines": {
-    "npm" : ">=7.0.0 <9.0.0",
+    "npm": ">=7.0.0 <9.0.0",
     "yarn": ">=1.22.0",
     "node": ">=16.10.0 <17.0.0"
   }

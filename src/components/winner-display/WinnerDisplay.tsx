@@ -1,7 +1,7 @@
 import { WinnerDisplayContainer, WinnerText } from "./WinnerDisplay.styled"
 
 type Props = {
-    text: string;
+    text?: string;
 }
 
 const WinnerDisplay: React.FC<Props> = ({ text }) => (

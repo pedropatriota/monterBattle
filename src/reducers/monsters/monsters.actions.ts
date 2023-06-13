@@ -1,5 +1,9 @@
-import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { Monster } from '../../models/interfaces/monster.interface';
+import {
+  AsyncThunkPayloadCreator,
+  createAction,
+  createAsyncThunk,
+} from '@reduxjs/toolkit';
+import { Monster, WinnerBody, MonsterWinner } from '../../models/interfaces/monster.interface';
 import { MonsterService } from './monsters.service';
 
 export const fetchMonstersData = createAsyncThunk<Monster[]>(
@@ -9,4 +13,9 @@ export const fetchMonstersData = createAsyncThunk<Monster[]>(
 
 export const setSelectedMonster = createAction<Monster | null>(
   'monsters/setSelectedMonster',
+);
+
+export const fetchMonsterWinner = createAsyncThunk<MonsterWinner, WinnerBody>(
+  'monster/setMonsterWinner',
+  (data) => MonsterService.getWinner(data),
 );
