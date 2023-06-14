@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { memo, useState } from "react"
 import { useAppDispatch } from "../../app/hooks"
 import { Monster } from "../../models/interfaces/monster.interface"
 import { setSelectedMonster } from "../../reducers/monsters/monsters.actions"
@@ -8,7 +8,7 @@ type MonstersListProps = {
     monsters: Monster[]
 }
 
-const MonstersList: React.FC<MonstersListProps> = ({ monsters }) => {
+const MonstersList: React.FC<MonstersListProps> = memo(({ monsters }) => {
     const dispatch = useAppDispatch();
 
     const [selectedMonsterId, setSelectedMonsterId] = useState<string | null>(null);
@@ -35,6 +35,6 @@ const MonstersList: React.FC<MonstersListProps> = ({ monsters }) => {
             </MonstersSection>
         </div>
     )
-}
+});
 
 export { MonstersList }

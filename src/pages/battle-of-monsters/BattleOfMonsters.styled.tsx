@@ -13,7 +13,8 @@ export const PageContainer = styled.div(() => ({
 export const BattleSection = styled.section(() => ({
   display: 'flex',
   alignItems: 'center',
-  gap: '25px'
+  gap: '25px',
+  marginBottom: '129px'
 }))
   
   

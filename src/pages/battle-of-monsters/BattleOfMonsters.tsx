@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../app/hooks';
 import { MonsterBattleCard } from '../../components/monster-battle-card/MonsterBattleCard';
@@ -7,6 +7,7 @@ import { Title } from '../../components/title/Title';
 import {
   fetchMonstersData,
   fetchMonsterWinner,
+  setSelectedMonster,
 } from '../../reducers/monsters/monsters.actions';
 import { Monster } from '../../models/interfaces/monster.interface';
 import {
@@ -24,6 +25,8 @@ import { WinnerDisplay } from '../../components/winner-display/WinnerDisplay';
 const BattleOfMonsters = () => {
   const dispatch = useAppDispatch();
 
+  const [computerMonster, setComputerMonster] = useState<Monster | null>(null);
+
   const monsters = useSelector(selectMonsters);
   const selectedMonster = useSelector(selectSelectedMonster);
   const getWinner = useSelector(selectMonsterWinner);
@@ -32,26 +35,37 @@ const BattleOfMonsters = () => {
     dispatch(fetchMonstersData());
   }, [dispatch]);
 
-  const handleSelectComputerMonster = useCallback((): Monster | undefined => {
+  const handleSelectComputerMonster = useCallback((): void => {
     if (selectedMonster) {
       const randomMonster = Math.floor(Math.random() * (monsters.length - 1));
       if (monsters[randomMonster].id === selectedMonster.id) {
         return handleSelectComputerMonster();
       }
-      return monsters[randomMonster];
+      setComputerMonster(monsters[randomMonster]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedMonster]);
 
-  const handleStartBattleClick = useCallback(() => {    
-      const data = {
-        monster1Id: selectedMonster?.id,
-        monster2Id: handleSelectComputerMonster()?.id,
-      };
+  const handleStartBattleClick = useCallback(():void => {
+    const data = {
+      monster1Id: selectedMonster?.id,
+      monster2Id: computerMonster?.id,
+    };
 
-      dispatch(fetchMonsterWinner(data));    
-  
-  },[dispatch, handleSelectComputerMonster, selectedMonster?.id]);
+    dispatch(fetchMonsterWinner(data));
+  }, [computerMonster?.id, dispatch, selectedMonster?.id]);
+
+  const handleReset = () => {
+    setComputerMonster(null)
+    dispatch(setSelectedMonster(null))
+    dispatch(fetchMonsterWinner({monster1Id:'', monster2Id: ''}));
+  }
+
+  useEffect(() => {
+    if (selectedMonster?.id) {
+      handleSelectComputerMonster();
+    }
+  }, [handleSelectComputerMonster, selectedMonster?.id]);
 
   return (
     <PageContainer>
@@ -59,7 +73,9 @@ const BattleOfMonsters = () => {
 
       <MonstersList monsters={monsters} />
 
-      {getWinner?.winner?.name && <WinnerDisplay text={getWinner.winner.name} />}
+      {getWinner?.winner?.name && (
+        <WinnerDisplay text={getWinner.winner.name} />
+      )}
 
       <BattleSection>
         <MonsterBattleCard
@@ -70,12 +86,12 @@ const BattleOfMonsters = () => {
         <StartBattleButton
           data-testid="start-battle-button"
           disabled={selectedMonster === null}
-          onClick={handleStartBattleClick}>
-          Start Battle
+          onClick={getWinner?.winner?.id ? handleReset :handleStartBattleClick}>
+          {getWinner?.winner?.id ? 'Reset' :'Start Battle'}
         </StartBattleButton>
         <MonsterBattleCard
-          title="Computer"
-          monster={handleSelectComputerMonster()}
+          title={computerMonster?.name || 'Computer'}
+          monster={computerMonster}
         />
       </BattleSection>
     </PageContainer>
