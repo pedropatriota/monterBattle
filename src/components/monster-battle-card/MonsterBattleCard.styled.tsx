@@ -61,7 +61,7 @@ export const ContainerMonsterStats = styled.div(() => ({
 }));
 
 export const BattleMonsterStats = styled.p(() => ({
-  fontFamily: 'Roboto',
+  fontFamily: '"Roboto", sans-serif',
   fontStyle: 'normal',
   fontWeight: '400',
   fontSize: '12px',

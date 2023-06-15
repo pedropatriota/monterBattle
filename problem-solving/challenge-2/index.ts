@@ -20,12 +20,10 @@ export const diceFacesCalculator = (
     } else {
       hash[i] += 1;
     }
-  }
-
- 
+  } 
 
   for (let key of Object.keys(hash)) {
-    const numKey = Number(key)
+    const numKey = parseInt(key, 10)
   
     if (hash[key] === 3) {
       return numKey * 3;

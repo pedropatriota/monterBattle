@@ -9,6 +9,7 @@ export const findLessCostPath = (board: number[][]): number => {
   const cols = board[0].length;
 
   const distances: number[][] = [];
+
   for (let row = 0; row < rows; row++) {
     distances[row] = [];
     for (let col = 0; col < cols; col++) {
@@ -21,6 +22,7 @@ export const findLessCostPath = (board: number[][]): number => {
   for (let k = 0; k < rows * cols - 1; k++) {
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
+        
         const neighbors = [
           [row - 1, col], // Top
           [row, col - 1], // Left
@@ -39,8 +41,9 @@ export const findLessCostPath = (board: number[][]): number => {
       }
     }
   }
-  const lastRow = board[board.length - 1];
-  const lastIndex = lastRow[lastRow.length - 1];
 
-  return distances[rows - 1][cols - 1] - lastIndex;
+  const lastRow = board[board.length - 1];
+  const lastValue = lastRow[lastRow.length - 1];
+
+  return distances[rows - 1][cols - 1] - lastValue;
 };
